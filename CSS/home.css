@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    flex-direction: column;
+    border: 2px solid blue;
+    padding: 5%;
+
+}
+
+
+#email-in {
+    background-color: gray;
+    border-radius: 50px;
+    border: 2px solid white;
+}
+
+#pass-in {
+    background-color:gray;
+    border-radius: 50px;
+    border: 2px solid white;
+
+}
+
+.lbls {
+    color: white;
+}
+
+#login {
+    color: white;
+    width: 50%;
+    align-self: center;
+    margin-top: 40px;
+    border-radius: 50px;
+    border: 2px solid white;
+
+}
+#login :hover{
+    
+}
