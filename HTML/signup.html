@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../CSS/signup.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+  integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+</head>
+
+<body >
+    <div class="main">
+        <div class="img-form-container">
+            <div>
+                <img class="signup-img" src="../Images/signup.png" alt="">
+            </div>
+            <div class="form-container">
+                <form class="form" action="home.html" method="post">
+                    <lable id="name-sign-label" class="lbls">Full Name</lable>
+
+                    <input class="inputs-fields" placeholder="your name here" type="text" name="full name" id="name-in">
+
+                    <lable id="email-sign-label" class="lbls">Email</lable>
+
+                    <input class="inputs-fields" placeholder="example@email.com" type="email" name="email" id="email-in">
+
+                    <lable id="pass-sign-label" class="lbls">Password</lable>
+
+                    <input class="inputs-fields" placeholder="your password here" type="password" name="password" id="pass-in">
+
+                    <lable id="phone-sign-label" class="lbls">Phone Number</lable>
+
+                    <input class="inputs-fields" placeholder="your phone no. here" type="tel" name="phone number" id="phone-in">
+
+                    <button class="signup-btn" id="sign-up">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/logic.js"></script>
+</body>
+
+</html>

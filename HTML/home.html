@@ -2,24 +2,44 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>HOME</title>
     <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+        integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 </head>
 
-<body style="background-color: rgb(90, 24, 151);">
-    <div>
-        <form class="main" action="home.html" method="post">
-            <lable class="lbls">Email</lable>
-            <input class="form-control" type="email" name="email" id="email-in">
-            <lable class="lbls">Password</lable>
-            <input class="form-control"type="password" name="password" id="pass-in">
-            <button class="btn" id="login">Login</button>
-        </form>
-    </div>
+<body>
+    <div class="main">
+        <div class="img-form-container">
+            <div>
+                <img class="login-img" src="../Images/login.svg" alt="">
+            </div>
+            <div class="form-container">
+                <form class="form" action="home.html" method="post">
+                    <lable id="email-label" class="lbls">Email</lable>
 
+                    <input id="email-in" class="login-input-field" placeholder="example@email.com" type="email" name="email" >
+
+                    <lable id="pass-label" class="lbls">Password</lable>
+
+                    <input id="pass-in" class="login-input-field" placeholder="your password here" type="password" name="password" >
+
+                    <button class="btn" id="login">Login</button>
+
+                    <label class="dont-have-account">Don't have an account ?</label>
+                    <button class="btn" id="sign-up"> <a class="sign-up" href="./signup.html">sign up <i style='font-size:20px; margin-top: 2px; color: rgba(37, 46, 170, 0.787);'
+                                class='fas'>&#xf0a9;</i>
+                        </a> </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/logic.js"></script>
 </body>
 
 </html>
