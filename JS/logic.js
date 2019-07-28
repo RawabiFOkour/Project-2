@@ -11,22 +11,43 @@
     var emailInput = $("#email-in");
     var passwordInput = $("#pass-in");
     var loginBtn = $("#login-btn");
-    var signUpBtn = $("#sign-up");
+    var goToSignUpPageBtn = $("#sign-up");
 
 
     /* Users Data */
     var users = [{
         name: "Mohamad",
         email: "mohamadaktham7@gmail.com",
-        password: "123",
-        pgone: 0777753111
+        password: "123456",
+        phone: '0777753111'
+    }, {
+        name: "Rawabi",
+        email: "rawabi@gmail.com",
+        password: "123456",
+        phone: '0774512365'
+    }, {
+        name: "Jozaa",
+        email: "jozaaa@gmail.com",
+        password: "123456",
+        phone: '0771234532'
+    }, {
+        name: "Mohamad",
+        email: "mohamadaktham7@gmail.com",
+        password: "123456",
+        phone: '0777519943'
     }]
 
+    var newUser = {};
+    var counter = 0;
 
+    /********************************************************************************************* */
+
+    //Start Doing Some Logic :) 
     $(document).ready(function () {
 
         /* Sign Up Part*/
 
+        // Start Animate Input Fields When Focus 
         nameSignInput.focus(function () {
             nameSignInput.animate({
                 width: '100%'
@@ -50,6 +71,7 @@
                 width: '80%'
             })
         })
+
         passwordSignInput.focus(function () {
             passwordSignInput.animate({
                 width: '100%'
@@ -61,6 +83,7 @@
                 width: '80%'
             })
         })
+
         phoneSignInput.focus(function () {
             phoneSignInput.animate({
                 width: '100%'
@@ -72,14 +95,134 @@
                 width: '80%'
             })
         })
+        // End Animate Input Fields When Focus 
 
 
+        //Regular Expressions For Validating Purposes
+        function EmailValidation(emailValue) {
+            var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return regex.test(emailValue);
+        }
+
+        function passwordValidation(passwordvalue) {
+            var regex = /^[a-zA-Z0-9]{5,15}$/;
+            return regex.test(passwordvalue);
+        }
+
+        function PhoneValidation(phoneValue) {
+            var regex = /^[0-9]{10}$/;
+            return regex.test(phoneValue);
+        }
+        //End Regular Expressions For Validating Purposes
 
 
+        //Functions To Check Validation Status.
+        function validateName() {
+            var nameSignInputVal = nameSignInput.val().trim();
+            if (nameSignInputVal === '') {
+                $('.wrong-sign-name').attr('hidden', false);
+                nameSignInput.css('border', '2px red solid')
+                $('.name-field').addClass('error')
+                return false
+            } else {
+                return true;
+            }
+        }
 
+        function validateEmail() {
+
+            var emailSignInputVal = emailSignInput.val().trim();
+            if (EmailValidation(emailSignInputVal) === false) {
+                $('.wrong-sign-email').attr('hidden', false);
+                emailSignInput.css('border', '2px red solid')
+                $('.email-field').addClass('error')
+                return false
+            } else {
+                return true;
+            }
+
+        }
+
+        function validatePassword() {
+
+            var passwordSignInputVal = passwordSignInput.val().trim();
+            if (passwordValidation(passwordSignInputVal) === false) {
+                $('.wrong-sign-password').attr('hidden', false);
+                passwordSignInput.css('border', '2px red solid')
+                $('.password-field').addClass('error')
+                return false
+            } else {
+                return true;
+            }
+
+        }
+
+        function validatePhone() {
+
+            var phoneSignInputVal = phoneSignInput.val().trim();
+            if (PhoneValidation(phoneSignInputVal) === false) {
+                $('.wrong-sign-Phone').attr('hidden', false);
+                phoneSignInput.css('border', '2px red solid')
+                $('.phone-field').addClass('error')
+                return false
+            } else {
+                return true;
+            }
+        }
+        //End Functions To Check Validation Status.
+
+
+        //Sign Up Click Event.
+        signUpBtn.click(function (e) {
+            e.preventDefault();
+
+            if (validateName()) {
+                newUser['name'] = nameSignInput.val().trim();
+                counter++;
+            }
+            if (validateEmail()) {
+                newUser['email'] = emailSignInput.val().trim();
+                counter++;
+            }
+            if (validatePassword()) {
+                newUser['password'] = passwordSignInput.val().trim();
+                counter++;
+            }
+            if (validatePhone()) {
+                newUser['phone'] = phoneSignInput.val().trim()+'';
+                counter++;
+            }
+            if (counter === 4) {
+                users.push(newUser);
+                window.location.href = 'profile.html';
+            }
+        })
+
+        //Remove Errors Alerts when User Reenter New Valuse.
+        nameSignInput.keyup(function () {
+            nameSignInput.css('border', '2px solid rgba(37, 46, 170, 0.787)');
+            $('.wrong-sign-name').attr('hidden', true);
+        })
+
+        emailSignInput.keyup(function () {
+            emailSignInput.css('border', '2px solid rgba(37, 46, 170, 0.787)');
+            $('.wrong-sign-email').attr('hidden', true);
+        })
+
+        passwordSignInput.keyup(function () {
+            passwordSignInput.css('border', '2px solid rgba(37, 46, 170, 0.787)');
+            $('.wrong-sign-password').attr('hidden', true);
+        })
+
+        phoneSignInput.keyup(function () {
+            phoneSignInput.css('border', '2px solid rgba(37, 46, 170, 0.787)');
+            $('.wrong-sign-Phone').attr('hidden', true);
+        })
+
+        /************************************************************************************************************** */
 
         /* Log In Part*/
-        //Animate Email Input Width
+        // Start Animate Input Fields When Focus 
         emailInput.focus(function () {
             emailInput.animate({
                 width: '100%'
@@ -93,7 +236,6 @@
             })
         })
 
-        //Animate Password Input Width
         passwordInput.focus(function () {
             passwordInput.animate({
                 width: '100%'
@@ -105,122 +247,58 @@
                 width: '80%'
             })
         })
+        // End Animate Input Fields When Focus 
 
-        loginBtn.click(function () {
+
+        //Login Button Click Event.
+        loginBtn.click(function (e) {
+            e.preventDefault();
 
             users.forEach(element => {
 
                 if (emailInput.val() === element.email && passwordInput.val() === element.password) {
-                    window.open('profile.html')
+                    window.location.href = 'profile.html' + emailInput.val() + passwordInput.val();
                 }
 
                 if (emailInput.val() !== element.email) {
-                    emailInput.css('border', '3px red solid')
+                    emailInput.css('border', '2px red solid')
                     $('.email-field').addClass('error')
                     $('.wrong-email').attr('hidden', false);
                 }
 
                 if (passwordInput.val() !== element.password) {
-                    passwordInput.css('border', '3px red solid')
+                    passwordInput.css('border', '2px red solid')
                     $('.password-field').addClass('error')
                     $('.wrong-password').attr('hidden', false);
                 }
             })
 
-
             if (emailInput.val() === '') {
-                emailInput.css('border', '3px red solid')
+                emailInput.css('border', '2px red solid')
                 $('.email-field').addClass('error')
                 $('.wrong-email').attr('hidden', false);
             }
 
             if (passwordInput.val() === '') {
-                passwordInput.css('border', '3px red solid')
+                passwordInput.css('border', '2px red solid')
                 $('.password-field').addClass('error')
                 $('.wrong-password').attr('hidden', false);
             }
         })
 
-    })
 
-    $(function () {
-        // validation Name using regular Exprestion
-        $('.signup-btn').click(function () {
-            var nameSignInputVal = $("#name-in").val().trim();
-            var result = NameValidation(nameSignInputVal);
-            if (result === false) {
-                return alert("not valid Name... try agin !");
-            }
-            else {
-                return alert(" valid Name");
-            }
+        //Remove Errors Alerts when User Reenter New Valuse. 
+        emailInput.keyup(function () {
+            emailInput.css('border', '2px solid rgba(37, 46, 170, 0.787)');
+            $('.email-field').removeClass('error');
+            $('.wrong-email').attr('hidden', true);
         })
 
-
-        function NameValidation(nameSignInputVal) {
-            var regex = /^[a-zA-z]+$/;
-            return regex.test(nameSignInputVal);
-        }
-        // validation email using regular Exprestion
-        $('.signup-btn').click(function () {
-            var emailSignInputVal = $("#email-signup-in").val().trim();
-            var result = EmailValidation(emailSignInputVal);
-            if (result === false) {
-                return alert("not valid email... try agin !");
-            }
-            else {
-                return alert(" valid email");
-            }
+        passwordInput.keyup(function () {
+            passwordInput.css('border', '2px solid rgba(37, 46, 170, 0.787)');
+            $('.password-field').removeClass('error');
+            $('.wrong-password').attr('hidden', true);
         })
 
-
-        function EmailValidation(emailSignInputVal) {
-            var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            return regex.test(emailSignInputVal);
-        }
-
-
-
-
-
-        // validation password using regular Exprestion
-        $('.signup-btn').click(function () {
-            var passwordSignInputval = $("#pass-signup-in").val().trim();
-            var result = passwordValidation(passwordSignInputval);
-            if (result === false) {
-                return alert("not valid password ...try agin !");
-            }
-            else {
-                return alert(" valid password");
-            }
-        })
-
-
-        function passwordValidation(passwordSignInputval) {
-            var regex = /^[a-zA-Z0-9]{5,15}$/;
-            return regex.test(passwordSignInputval);
-        }
-
     })
-
-    // validation phone Number using regular Exprestion
-    $('.signup-btn').click(function () {
-        var phoneSignInputVal = $("#phone-in").val().trim();
-        var result = PhoneValidation(phoneSignInputVal);
-        if (result === false) {
-            return alert("not valid phone number ...try agin !");
-        }
-        else {
-            return alert(" valid phone number");
-        }
-    })
-
-
-    function PhoneValidation(phoneSignInputVal) {
-        var regex = /^[0-9]{10}$/;
-        return regex.test(phoneSignInputVal);
-    }
-
-
 }
-

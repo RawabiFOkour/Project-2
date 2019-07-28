@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" href="../Images/icon.jpg">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>Sign up</title>
     <link rel="stylesheet" href="../CSS/signup.css">
-    <link rel="icon" href="../Images/icon.jpg">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
@@ -24,22 +24,30 @@
                 <form class="form" action="home.html" method="post">
                     <lable class="lbls">Full Name</lable>
 
-                    <input class="inputs-fields" placeholder="your name here" type="text" name="full name" id="name-in">
+                    <input class="inputs-fields name-field" placeholder="your name here" type="text" name="full name"
+                        id="name-in">
+                    <p class="wrong-sign-name" hidden="true"> Name is Required. <i class="fas fa-exclamation-circle"></i>
+                    </p>
 
                     <lable class="lbls">Email</lable>
 
-                    <input class="inputs-fields" placeholder="example@email.com" type="email" name="email"
+                    <input class="inputs-fields email-field" placeholder="example@email.com" type="email" name="email"
                         id="email-signup-in">
+                    <p class="wrong-sign-email" hidden="true"> Invalid E-mail. <i class="fas fa-exclamation-circle"></i> </p>
 
                     <lable class="lbls">Password</lable>
 
-                    <input class="inputs-fields" placeholder="your password here" type="password" name="password"
-                        id="pass-signup-in">
+                    <input class="inputs-fields password-field" placeholder="your password here" type="password"
+                        name="password" id="pass-signup-in">
+                    <p class="wrong-sign-password" hidden="true"> Invalid Password. <i class="fas fa-exclamation-circle"></i>
+                    </p>
 
                     <lable class="lbls">Phone Number</lable>
 
-                    <input class="inputs-fields" placeholder="your phone no. here" type="tel" name="phone number"
-                        id="phone-in">
+                    <input class="inputs-fields phone-field" placeholder="your phone no. here" type="tel"
+                        name="phone number" id="phone-in">
+                    <p class="wrong-sign-Phone" hidden="true"> Invalid Phone Number. <i
+                            class="fas fa-exclamation-circle"></i> </p>
 
                     <button class="signup-btn" id="sign-up">Sign Up</button>
                 </form>

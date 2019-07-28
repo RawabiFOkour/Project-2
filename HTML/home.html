@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
+    <link rel="icon" href="../Images/icon.jpg">
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>HOME</title>
-    <link rel="icon" href="../Images/icon.jpg">
     <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,17 +24,19 @@
                 <form class="form" action="home.html" method="post">
                     <lable class="lbls">Email</lable>
 
-                    <input id="email-in" class="login-input-field email-field" placeholder="example@email.com" type="email"
-                        name="email">
-                    <p class="wrong-email" hidden="true"> Invalid E-mail. <i class="fas fa-exclamation-circle"></i> </p>
+                    <input id="email-in" class="login-input-field email-field" placeholder="example@email.com"
+                        type="email" name="email">
+                    <p class="wrong-sign-email" hidden="true"> Invalid E-mail. <i class="fas fa-exclamation-circle"></i> </p>
                     <lable class="lbls">Password</lable>
 
-                    <input id="pass-in" class="login-input-field password-field" placeholder="your password here" type="password"
-                        name="password">
-                        <p class="wrong-password" hidden="true"> Wrong Password. <i class="fas fa-exclamation-circle"></i></p>
+                    <input id="pass-in" class="login-input-field password-field" placeholder="your password here"
+                        type="password" name="password">
+                    <p class="wrong-password" hidden="true"> Wrong Password. <i class="fas fa-exclamation-circle"></i>
+                    </p>
                     <button class="login-btn" id="login-btn">Login</button>
                     <label class="dont-have-account">Don't have an account ?</label>
-                    <a class="sign-up-btn" href="./signup.html">sign up <i style='font-size:20px; margin-top: 2px; color: rgba(37, 46, 170, 0.787);'
+                    <a class="sign-up-btn" href="./signup.html">sign up <i
+                            style='font-size:20px; margin-top: 2px; color: rgba(37, 46, 170, 0.787);'
                             class='fas'>&#xf0a9;</i></a>
 
                 </form>
