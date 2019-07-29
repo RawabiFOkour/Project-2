@@ -1,4 +1,11 @@
 {
+    // back to home
+
+
+   
+
+    localStorage=null;
+
     /* Sign Up Instance Variables*/
     var nameSignInput = $("#name-in");
     var emailSignInput = $("#email-signup-in");
@@ -12,6 +19,7 @@
     var passwordInput = $("#pass-in");
     var loginBtn = $("#login-btn");
     var goToSignUpPageBtn = $("#sign-up");
+    var logoutBtn = $("#logout");
 
 
     /* Users Data */
@@ -175,7 +183,6 @@
         //Sign Up Click Event.
         signUpBtn.click(function (e) {
             e.preventDefault();
-
             if (validateName()) {
                 newUser['name'] = nameSignInput.val().trim();
                 counter++;
@@ -189,14 +196,19 @@
                 counter++;
             }
             if (validatePhone()) {
-                newUser['phone'] = phoneSignInput.val().trim()+'';
+                newUser['phone'] = phoneSignInput.val().trim() + '';
                 counter++;
             }
             if (counter === 4) {
-                users.push(newUser);
-                window.location.href = 'profile.html';
+                localStorage.setItem('newUser', JSON.stringify(newUser));
+                console.log(localStorage)
+                // users.push(newUser)
+                counter = 0
             }
         })
+        // logoutBtn.click(function () {
+        //     window.location.href = 'home.html';
+        // });
 
         //Remove Errors Alerts when User Reenter New Valuse.
         nameSignInput.keyup(function () {
@@ -253,24 +265,29 @@
         //Login Button Click Event.
         loginBtn.click(function (e) {
             e.preventDefault();
-
+            console.log(users)
+            var retrievedData = localStorage.getItem('newUser');
+            var result = JSON.parse(retrievedData);
             users.forEach(element => {
 
-                if (emailInput.val() === element.email && passwordInput.val() === element.password) {
-                    window.location.href = 'profile.html' + emailInput.val() + passwordInput.val();
+                // if (emailInput.val() === element.email && passwordInput.val() === element.password) {
+                //     window.location.href = 'profile.html';
+                // }
+                if (emailInput.val() === result.email && passwordInput.val() === result.password) {
+                    // window.location.href = 'profile.html';
                 }
 
-                if (emailInput.val() !== element.email) {
-                    emailInput.css('border', '2px red solid')
-                    $('.email-field').addClass('error')
-                    $('.wrong-email').attr('hidden', false);
-                }
+                // if (emailInput.val() !== element.email) {
+                //     emailInput.css('border', '2px red solid')
+                //     $('.email-field').addClass('error')
+                //     $('.wrong-email').attr('hidden', false);
+                // }
 
-                if (passwordInput.val() !== element.password) {
-                    passwordInput.css('border', '2px red solid')
-                    $('.password-field').addClass('error')
-                    $('.wrong-password').attr('hidden', false);
-                }
+                // if (passwordInput.val() !== element.password) {
+                //     passwordInput.css('border', '2px red solid')
+                //     $('.password-field').addClass('error')
+                //     $('.wrong-password').attr('hidden', false);
+                // }
             })
 
             if (emailInput.val() === '') {
@@ -301,4 +318,11 @@
         })
 
     })
+
+    
 }
+
+
+
+
+

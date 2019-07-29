@@ -3,6 +3,8 @@ $(document).ready(function () {
     $("#wizard-picture").change(function () {
         readURL(this);
     });
+
+    // console.log(localStorage);
 });
 
 function readURL(input) {
@@ -15,3 +17,12 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+$(document).ready(function () {
+    
+    $("#logout").click(function () {
+        window.location.href = 'home.html';
+    });
+
+   
+});
